@@ -1,25 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, BrowserRouter } from 'react-router-dom'
+import './App.scss';
+import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
+import Profile, { IProfileState } from './components/Profile/Profile';
+import { IMessageState } from './redux/message-reducer';
+import Messages from './components/Messages/Messages';
 
-function App() {
+
+export interface IAppProps {  
+    state: {
+      profile: IProfileState
+      messages: IMessageState
+    },
+    dispatch: Function
+}
+
+function App(props: IAppProps) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="app-wrapper">
+        <Header />
+        <Navbar />
+        <div className="content">
+          <Route
+            path='/messages'
+            render={() =>
+              <Messages
+                state={props.state.messages}
+                dispatch={props.dispatch}
+              />}
+          />
+
+          <Route path='/profile' render={() => <Profile state={props.state.profile} />} />
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

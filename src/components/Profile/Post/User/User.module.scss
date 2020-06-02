@@ -1,0 +1,19 @@
+.wrapper {
+    //height: 40px;    
+    display: flex;   
+    padding: 10px 10px 0 10px; 
+    //border: 1px solid red;
+}
+
+.userName {
+    margin-left: 10px;
+}
+
+$avaSize: 40px;
+.ava {
+    width: $avaSize;
+    height: $avaSize;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+}

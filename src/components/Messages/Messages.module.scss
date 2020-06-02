@@ -1,0 +1,116 @@
+.messageWrapper {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 30% 70%;
+}
+
+.dialogsList {
+    border-right: 1px solid;
+    overflow: overlay;
+    box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+.messageBox {
+    position: relative;
+    display: flex;
+    //flex-flow: column;
+    flex-direction: column;
+    align-items: stretch;
+
+    color: rgba(255, 255, 255, 0.4);
+
+    .header {
+        position: sticky;
+        top: 0;
+        height: 30px;
+        padding: 8px 10px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+
+        z-index: 1;
+        backdrop-filter: blur(3px);
+        background-color: rgba(50, 50, 50, 0.5);
+    }
+    .content {
+        margin-top: -39px;
+        height: 1px;
+        padding: 0 10px;
+        flex-grow: 1;
+        overflow: overlay;
+        
+        background-color: rgba(0, 0, 0, 0.2);
+        // &::-webkit-scrollbar {
+        //     width: 0;
+        // }
+        box-shadow: inset 0px 0px 7px -5px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column-reverse;
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+        -ms-overflow-style: none;
+        //flex-direction: column;
+
+        .messageList {
+            padding: 50px 10px 0;
+            //padding-top: 50px;
+            display: flex;
+            flex-direction: column;
+            //flex-direction: column-reverse;
+            //overflow-y: scroll;
+            
+        }
+        position: relative;        
+    }
+    .senderBox {
+        box-sizing: border-box;
+        position: sticky;
+        bottom: 0;
+        height: 51px;
+        padding: 7px;
+        width: 100%;
+        border-top: 1px solid black;
+        display: flex;
+        .textArea {
+            font: inherit;
+            margin: 0;
+            padding: 5px 10px;
+            flex-grow: 1;
+            resize: none;
+            outline: none;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: rgba(255, 255, 255, 0.4);
+            border-color: black;
+            border-right: none;
+            &::selection {
+                background-color: #f7ca16;
+                color: black;
+            }
+        }
+        .sendButton {
+            font-family: inherit;
+            font-size: 15px;
+            margin: 0;
+            padding: 0 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: rgba(255, 255, 255, 0.3);
+            border: 1px solid black;
+            outline: none;
+            transition: all 0.3s;
+            &:hover {
+                box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+            &:active {
+                color: #f7ca16;
+                background-color: rgba(0, 0, 0, 0.1);
+                box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+}
